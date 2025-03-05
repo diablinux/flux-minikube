@@ -22,7 +22,14 @@ spec:
     enable: false
   interval: 50m
   values:
-    replicaCount: 2
-    ingress:
-      enabled: true
-      className: nginx
+    replicaCount: 3
+    service:
+      type: ClusterIP # Default service type for internal load balancing
+      port: 9898
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "64Mi"
+      limits:
+        cpu: "200m"
+        memory: "128Mi"
