@@ -12,9 +12,8 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-        namespace: monitoring
+        namespace: flux-system
   releaseName: kube-prometheus-stack
-  targetNamespace: monitoring
   install:
     createNamespace: true # Ensures the monitoring namespace is created if it doesn’t exist
   values:
