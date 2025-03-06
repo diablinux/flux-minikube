@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-        namespace: flux-system
+        namespace: monitoring
   releaseName: kube-prometheus-stack
   targetNamespace: monitoring
   install:
