@@ -21,6 +21,7 @@ spec:
     args:
       - "--debug" # Enable debug logging
       - "--enable-realtime-compositions"
+      - "--set provider.packages=xpkg.upbound.io/upbound/provider-kubernetes:latest"
     resources:
       requests:
         cpu: "100m"
