@@ -20,6 +20,7 @@ spec:
     # Optional customizations
     args:
       - "--debug" # Enable debug logging
+      - "--enable-realtime-compositions"
     resources:
       requests:
         cpu: "100m"
