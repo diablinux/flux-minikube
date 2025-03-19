@@ -1,0 +1,39 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: podinfo
+spec:
+  releaseName: podinfo
+  targetNamespace: podinfo
+  install:
+    createNamespace: true # Ensures the namespace is created if it doesn’t exist
+    remediation:
+      retries: 3	
+  chart:
+    spec:
+      chart: podinfo
+      version: "6.7.1"
+      sourceRef:
+        kind: HelmRepository
+        name: podinfo
+        namespace: flux-system
+  test:
+    enable: false
+  interval: 50m
+  values:
+    ingress:
+      enabled: true
+    replicaCount: 3
+    service:
+      type: ClusterIP # Default service type for internal load balancing
+      port: 9898
+      targetPort: 9898
+      sessionAffinity: None
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "64Mi"
+      limits:
+        cpu: "200m"
+        memory: "128Mi"
