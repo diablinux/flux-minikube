@@ -24,7 +24,7 @@ spec:
   values:
     ingress:
       enabled: true
-    replicaCount: 3
+    replicaCount: 1
     service:
       type: ClusterIP # Default service type for internal load balancing
       port: 9898
