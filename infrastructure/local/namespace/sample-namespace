@@ -13,4 +13,4 @@ spec:
         labels:
           example: "true"
   providerConfigRef:
-    name: kubernetes-provider
+    name: provider-kubernetes 
