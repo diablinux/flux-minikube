@@ -1,0 +1,13 @@
+apiVersion: ec2.aws.crossplane.io/v1alpha1
+kind: Instance
+metadata:
+  name: my-ec2-instance
+spec:
+  forProvider:
+    region: us-east-1
+    instanceType: t2.micro
+    imageId: ami-012967cc5a8c9f891  # Amazon Linux 2 AMI (us-east-1)
+    keyName: DevKeyPair         # Replace with your EC2 key pair name
+#    subnetId: subnet-xxxxxxxx   # Replace with your subnet ID (optional)
+  providerConfigRef:
+    name: aws-personal-provider
