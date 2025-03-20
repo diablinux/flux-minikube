@@ -1,0 +1,25 @@
+# flux-values.yaml
+sourceController:
+  metrics:
+    enabled: true
+    service:
+      enabled: true
+      port: 8080
+kustomizeController:
+  metrics:
+    enabled: true
+    service:
+      enabled: true
+      port: 8080
+helmController:
+  metrics:
+    enabled: true
+    service:
+      enabled: true
+      port: 8080
+notificationController:
+  metrics:
+    enabled: true
+    service:
+      enabled: true
+      port: 8080
