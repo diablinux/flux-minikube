@@ -21,6 +21,9 @@ spec:
     prometheus:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelector:
+          matchLabels:
+            app.kubernetes.io/part-of: flux
     grafana:
       # Use an existing secret for the admin user.
       admin:
