@@ -18,6 +18,9 @@ spec:
   install:
     createNamespace: true # Ensures the monitoring namespace is created if it doesn’t exist
   values:
+    prometheus:
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
     grafana:
       # Use an existing secret for the admin user.
       admin:
