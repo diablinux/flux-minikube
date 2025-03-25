@@ -1,0 +1,40 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: "70.3.0" # Use a specific version or range (check latest on ArtifactHub)
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  releaseName: kube-prometheus-stack
+  targetNamespace: monitoring
+  install:
+    createNamespace: true # Ensures the monitoring namespace is created if it doesn’t exist
+  values:
+    prometheus:
+      prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        retention: 24h
+        resources:
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        podMonitorNamespaceSelector: { }
+        podMonitorSelector:
+          matchLabels:
+            app.kubernetes.io/component: monitoring
+    grafana:
+      # Use an existing secret for the admin user.
+      admin:
+        ## Name of the secret. Can be templated.
+        existingSecret: "grafana-admin"
+        userKey: username
+        passwordKey: password
