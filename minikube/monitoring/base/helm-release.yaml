@@ -29,6 +29,8 @@ spec:
           matchLabels: null
         probeSelector:
           matchLabels: null
+        namespaceSelector:
+          matchNames: null
     prometheus-node-exporter:
       hostRootFsMount:
         enabled: false
