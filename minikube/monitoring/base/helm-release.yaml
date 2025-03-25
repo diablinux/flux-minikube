@@ -21,6 +21,9 @@ spec:
       prometheusSpec:
         podMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
+    prometheus-node-exporter:
+      hostRootFsMount:
+        enabled: false
     grafana:
       # Use an existing secret for the admin user.
       admin:
