@@ -19,8 +19,20 @@ spec:
   values:
     prometheus:
       prometheusSpec:
-        podMonitorSelectorNilUsesHelmValues: false
-        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelector:
+          matchLabels: null
+        serviceMonitorSelector:
+          matchLabels: null
+        scrapeConfigSelector:
+          matchLabels: null
+        ruleSelector:
+          matchLabels: null
+        probeSelector:
+          matchLabels: null
+    prometheus-node-exporter:
+      hostRootFsMount:
+        enabled: false
+        mountPropagation: HostToContainer
     grafana:
       # Use an existing secret for the admin user.
       admin:
