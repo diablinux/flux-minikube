@@ -20,6 +20,7 @@ spec:
   values:
     prometheus:
       prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
     grafana:
       # Use an existing secret for the admin user.
