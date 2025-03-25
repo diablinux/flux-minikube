@@ -24,6 +24,7 @@ spec:
     prometheus-node-exporter:
       hostRootFsMount:
         enabled: false
+        mountPropagation: HostToContainer
     grafana:
       # Use an existing secret for the admin user.
       admin:
