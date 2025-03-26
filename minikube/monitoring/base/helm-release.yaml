@@ -22,11 +22,12 @@ spec:
   values:
     kubeControllerManager:
       enabled: true
-      endpoints:
-        - 172.18.0.2  # Explicitly set the IP if needed
       serviceMonitor:
+        enabled: true
         https: true
-        insecureSkipVerify: true  # Ignore SSL errors
+        insecureSkipVerify: true
+        scheme: https
+        path: /api/v1/nodes/ddesktop-control-plane/proxy/metrics
     # kubeEtcd:
     #   enabled: true
     #   serviceMonitor:
