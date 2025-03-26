@@ -20,6 +20,13 @@ spec:
         name: kube-prometheus-stack
         namespace: flux-system
   values:
+    kubeControllerManager:
+      enabled: true
+      endpoints:
+        - 172.18.0.2  # Explicitly set the IP if needed
+      serviceMonitor:
+        https: true
+        insecureSkipVerify: true  # Ignore SSL errors
     # kubeEtcd:
     #   enabled: true
     #   serviceMonitor:
