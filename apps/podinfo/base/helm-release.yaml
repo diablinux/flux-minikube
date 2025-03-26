@@ -9,7 +9,8 @@ spec:
   install:
     createNamespace: true # Ensures the namespace is created if it doesn’t exist
     remediation:
-      retries: 3	
+      retries: 3
+  interval: 1h
   chart:
     spec:
       chart: podinfo
