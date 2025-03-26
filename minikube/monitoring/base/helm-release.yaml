@@ -17,6 +17,11 @@ spec:
   install:
     createNamespace: true # Ensures the monitoring namespace is created if it doesn’t exist
   values:
+    kubeEtcd:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        insecureSkipVerify: true
     # prometheus:
     #   prometheusSpec:
     #     podMonitorSelector:
