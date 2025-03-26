@@ -21,22 +21,24 @@ spec:
         namespace: flux-system
   values:
     kubeControllerManager:
-      enabled: false
+      enabled: true  # Enable kube-controller-manager monitoring
+      service:
+        enabled: false  # Disable the default Service (we don’t need it for proxy scraping)
       serviceMonitor:
-        enabled: false
-        # namespace: default  # Target the default namespace
-        # selector:
-        #   matchLabels:
-        #     component: apiserver  # Match the kubernetes Service’s label
-        #     provider: kubernetes
-        # endpoints:
-        # - scheme: https
-        #   path: /api/v1/nodes/desktop-control-plane/proxy/metrics
-        #   targetPort: 6443  # API server’s target port
-        #   bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-        #   tlsConfig:
-        #     caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-        #     insecureSkipVerify: true
+        enabled: true
+        namespace: default  # Target the default namespace where kubernetes Service is
+        selector:
+          matchLabels:
+            component: apiserver
+            provider: kubernetes  # Match the kubernetes Service labels
+        endpoints:
+        - scheme: https
+          path: /api/v1/nodes/desktop-control-plane/proxy/metrics  # Proxy path for kube-controller-manager
+          targetPort: 6443  # API server’s target port
+          bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+          tlsConfig:
+            caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+            insecureSkipVerify: true  # Safe for Docker Desktop
     # kubeEtcd:
     #   enabled: true
     #   serviceMonitor:
