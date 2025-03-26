@@ -17,12 +17,11 @@ spec:
   install:
     createNamespace: true # Ensures the monitoring namespace is created if it doesn’t exist
   values:
-    values:
-    kubeEtcd:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-        insecureSkipVerify: true
+    # kubeEtcd:
+    #   enabled: true
+    #   serviceMonitor:
+    #     enabled: true
+    #     insecureSkipVerify: true
     # prometheus:
     #   prometheusSpec:
     #     podMonitorSelector:
@@ -37,10 +36,10 @@ spec:
     #       matchLabels: null
     #     namespaceSelector:
     #       matchNames: null
-    prometheus-node-exporter:
-      hostRootFsMount:
-        enabled: false
-        mountPropagation: HostToContainer
+    # prometheus-node-exporter:
+    #   hostRootFsMount:
+    #     enabled: false
+    #     mountPropagation: HostToContainer
     # kube-state-metrics:
     #   # For kube-prometheus-stacks that are already installed and configured with
     #   # custom collectors, commenting out the collectors and extraArgs below will
