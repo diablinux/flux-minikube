@@ -21,22 +21,22 @@ spec:
         namespace: flux-system
   values:
     kubeControllerManager:
-      enabled: true
+      enabled: false
       serviceMonitor:
-        enabled: true
-        namespace: default  # Target the default namespace
-        selector:
-          matchLabels:
-            component: apiserver  # Match the kubernetes Service’s label
-            provider: kubernetes
-        endpoints:
-        - scheme: https
-          path: /api/v1/nodes/desktop-control-plane/proxy/metrics
-          targetPort: 6443  # API server’s target port
-          bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-          tlsConfig:
-            caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-            insecureSkipVerify: true
+        enabled: false
+        # namespace: default  # Target the default namespace
+        # selector:
+        #   matchLabels:
+        #     component: apiserver  # Match the kubernetes Service’s label
+        #     provider: kubernetes
+        # endpoints:
+        # - scheme: https
+        #   path: /api/v1/nodes/desktop-control-plane/proxy/metrics
+        #   targetPort: 6443  # API server’s target port
+        #   bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+        #   tlsConfig:
+        #     caFile: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        #     insecureSkipVerify: true
     # kubeEtcd:
     #   enabled: true
     #   serviceMonitor:
