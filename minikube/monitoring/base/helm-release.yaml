@@ -21,11 +21,11 @@ spec:
         namespace: flux-system
   values:
     kubeControllerManager:
-      enabled: false  # Enable kube-controller-manager monitoring
-      # service:
-      #   enabled: false  # Disable the default Service (we don’t need it for proxy scraping)
-      # serviceMonitor:
-      #   enabled: false
+      enabled: true  # Enable kube-controller-manager monitoring
+      service:
+        enabled: false  # Disable the default Service (we don’t need it for proxy scraping)
+      serviceMonitor:
+        enabled: false
         # namespace: default  # Target the default namespace where kubernetes Service is
         # selector:
         #   matchLabels:
@@ -340,6 +340,7 @@ spec:
     #                   suspended: [ spec, suspend ]
     #                   source_name: [ spec, sourceRef, name ]
     grafana:
+      defaultDashboardsTimezone: browser
       # Use an existing secret for the admin user.
       admin:
         ## Name of the secret. Can be templated.
