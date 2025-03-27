@@ -32,10 +32,10 @@ spec:
       sessionAffinity: None
     resources:
       requests:
-        cpu: 1m
+        cpu: 10m
         memory: 16Mi
       limits:
-        cpu: 2m
+        cpu: 20m
         memory: 32Mi
     hpa:
       enabled: true
