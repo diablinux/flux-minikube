@@ -41,4 +41,4 @@ spec:
       enabled: true
       maxReplicas: 30
       # average total CPU usage per pod (1-100)
-      cpu: 50
+      cpu: 90
