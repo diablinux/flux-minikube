@@ -21,7 +21,7 @@ spec:
         namespace: flux-system
   values:
     kubeControllerManager:
-      enabled: true  # Enable kube-controller-manager monitoring
+      enabled: false  # Enable kube-controller-manager monitoring
       service:
         enabled: false  # Disable the default Service (we don’t need it for proxy scraping)
       serviceMonitor:
